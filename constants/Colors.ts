@@ -1,0 +1,32 @@
+export const Colors = {
+  light: {
+    background: '#F8F9FA',
+    card: '#FFFFFF',
+    text: '#1A1A1A',
+    textSecondary: '#666666',
+    primary: '#FFB37C', // Peach/Orange from image
+    secondary: '#E2E8F0',
+    accent: '#4FD1C5',
+    success: '#34C759',
+    error: '#FF3B30',
+    border: '#EEEEEE',
+    shadow: '#000000',
+    purple: '#6366F1',
+    spotify: '#1DB954',
+  },
+  dark: {
+    background: '#121212',
+    card: '#1E1E1E',
+    text: '#FFFFFF',
+    textSecondary: '#AAAAAA',
+    primary: '#FFB37C',
+    secondary: '#2D3748',
+    accent: '#4FD1C5',
+    success: '#34C759',
+    error: '#FF3B30',
+    border: '#333333',
+    shadow: '#000000',
+    purple: '#818CF8',
+    spotify: '#1DB954',
+  },
+};
