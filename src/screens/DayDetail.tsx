@@ -1,21 +1,18 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { useLocalSearchParams, router } from 'expo-router';
 import { ArrowLeft, CheckCircle2, Clock, TrendingUp } from 'lucide-react-native';
+// import { Colors } from '../../constants/Colors';
+// import { Card } from '../../components/Shared/Card';
+// import { useApp } from '../../contexts/AppContext';
 import { format, parseISO } from 'date-fns';
 import { Colors } from '../constants/Colors';
 import { Card } from '../components/Shared/Card';
 import { useApp } from '../contexts/AppContext';
 
-type RootStackParamList = {
-    DayDetail: { date: string };
-};
-
 export default function DayDetailScreen() {
-    const navigation = useNavigation<any>();
-    const route = useRoute<RouteProp<RootStackParamList, 'DayDetail'>>();
-    const { date } = route.params;
+    const { date } = useLocalSearchParams<{ date: string }>();
     const { getDayActivity, habits, todos, pomodoroSessions } = useApp();
 
     const activity = getDayActivity(date || '');
@@ -32,7 +29,7 @@ export default function DayDetailScreen() {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+                <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
                     <ArrowLeft size={24} color={Colors.light.text} />
                 </TouchableOpacity>
                 <View style={styles.headerContent}>

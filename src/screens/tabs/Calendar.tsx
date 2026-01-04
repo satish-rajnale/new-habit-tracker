@@ -6,10 +6,9 @@ import { Colors } from '../../constants/Colors';
 import { Card } from '../../components/Shared/Card';
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, startOfWeek, endOfWeek, isSameDay, isSameMonth, addMonths, subMonths } from 'date-fns';
 import { useApp } from '../../contexts/AppContext';
-import { useNavigation } from '@react-navigation/native';
+import { router } from 'expo-router';
 
 export default function CalendarScreen() {
-    const navigation = useNavigation<any>();
     const [currentMonth, setCurrentMonth] = React.useState(new Date());
     const { getActiveDates, getDayActivity } = useApp();
 
@@ -40,7 +39,10 @@ export default function CalendarScreen() {
         const activity = getDayActivity(dateStr);
 
         if (activity) {
-            navigation.navigate('DayDetail', { date: dateStr });
+            router.push({
+                pathname: '/day-detail',
+                params: { date: dateStr }
+            });
         }
     };
 

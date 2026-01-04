@@ -8,10 +8,9 @@ import { Card } from '../../components/Shared/Card';
 import { Button } from '../../components/Shared/Button';
 import { useApp } from '../../contexts/AppContext';
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, startOfWeek, endOfWeek, isSameDay } from 'date-fns';
-import { useNavigation } from '@react-navigation/native';
+import { router } from 'expo-router';
 
 export default function DashboardScreen() {
-    const navigation = useNavigation<any>();
     const { habits, todos, pomodoroSessions, weather, toggleHabit, toggleTodo, getActiveDates } = useApp();
     const [searchVisible, setSearchVisible] = useState(false);
     const [menuVisible, setMenuVisible] = useState(false);
@@ -49,23 +48,23 @@ export default function DashboardScreen() {
     ] : [];
 
     const handleNavigateToHabits = () => {
-        navigation.navigate('Habits');
+        router.push('/(tabs)/habits');
     };
 
     const handleNavigateToCalendar = () => {
-        navigation.navigate('Calendar');
+        router.push('/(tabs)/calendar');
     };
 
     const handleNavigateToTodos = () => {
-        navigation.navigate('Todos');
+        router.push('/(tabs)/todos');
     };
 
     const handleNavigateToPomodoro = () => {
-        navigation.navigate('Pomodoro');
+        router.push('/(tabs)/pomodoro');
     };
 
     const handleNavigateToStats = () => {
-        navigation.navigate('Stats');
+        router.push('/(tabs)/stats');
     };
 
     return (
